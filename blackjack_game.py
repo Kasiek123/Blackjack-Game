@@ -50,40 +50,24 @@ def suma_punktow(karty):
 
 
 def porownanie_wynikow(punkty_gracza, punkty_krupiera):
-    """
-    Porownanie wynikow na podstawie otrzymanych parametrow (punkty gracza i krupiera).
-    Funkcja zwraca wartość logiczną (True) opisującą wynik porównań zdefiniowanych w słowniku
-    """
-    return f"Punkty krupiera: {punkty_krupiera}\nPunkty gracza: {punkty_gracza}\nWynik końcowy: { {
-        punkty_gracza == punkty_krupiera: 'Remis',
-        punkty_gracza > 21: 'Wygrywa krupier',
-        punkty_krupiera > 21: 'Wygrywa gracz',
-        punkty_krupiera == 21 and punkty_gracza != 21: 'Krupier wygrywa - BLACKJACK !!!',
-        punkty_gracza == 21 and punkty_krupiera != 21: 'Gracz wygrywa - BLACKJACK !!!',
-        (punkty_gracza > punkty_krupiera) and (punkty_gracza < 21): 'Wygrywa gracz',
-        (punkty_gracza < punkty_krupiera) and (punkty_krupiera < 21): 'Wygrywa krupier'
-    }[True]
-    }"
+    if punkty_gracza > 21 and punkty_krupiera > 21:
+        wynik = "Wygrywa gracz"
+    elif punkty_gracza == punkty_krupiera:
+         wynik = "Remis"
+    elif punkty_krupiera == 21:
+         wynik = "Krupier wygrywa - BLACKJACK !!!"
+    elif punkty_gracza == 21:
+         wynik = "Gracz wygrywa - BLACKJACK !!!"
+    elif punkty_gracza > 21:
+         wynik = "Wygrywa krupier"
+    elif punkty_krupiera > 21:
+         wynik = "Wygrywa gracz"
+    elif punkty_gracza > punkty_krupiera:
+         wynik = "Wygrywa gracz"
+    else:
+         wynik = "Wygrywa krupier"
 
-# def porownanie_wynikow(punkty_gracza, punkty_krupiera):
-#     if punkty_gracza > 21 and punkty_krupiera > 21:
-#         wynik = "Wygrywa gracz"
-#     elif punkty_gracza == punkty_krupiera:
-#         wynik = "Remis"
-#     elif punkty_krupiera == 21:
-#         wynik = "Krupier wygrywa - BLACKJACK !!!"
-#     elif punkty_gracza == 21:
-#         wynik = "Gracz wygrywa - BLACKJACK !!!"
-#     elif punkty_gracza > 21:
-#         wynik = "Wygrywa krupier"
-#     elif punkty_krupiera > 21:
-#         wynik = "Wygrywa gracz"
-#     elif punkty_gracza > punkty_krupiera:
-#         wynik = "Wygrywa gracz"
-#     else:
-#         wynik = "Wygrywa krupier"
-#
-#     return f"Punkty krupiera: {punkty_krupiera}\nPunkty gracza: {punkty_gracza}\nWynik końcowy: {wynik}"
+    return f"Punkty krupiera: {punkty_krupiera}\nPunkty gracza: {punkty_gracza}\nWynik końcowy: {wynik}"
 
 
 def grafika_kart(karty, karta_odkryta):
